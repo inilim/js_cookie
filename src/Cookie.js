@@ -3,7 +3,7 @@
 /**
  * @param {string} name
  */
-export function getCookieByName(name) {
+export function getCookie(name) {
     name = encodeURIComponent(name);
     let matches = document.cookie.match(
         new RegExp(
@@ -17,19 +17,19 @@ export function getCookieByName(name) {
 
 /**
  * @param {string} name
- * @param {string} value
+ * @param {string|null} value
  * @param {string} path
  * @param {number} days
  */
 export function setCookie (name, value, days = 0, path = '/')
 {
     name = encodeURIComponent(name);
-    value = encodeURIComponent(value);
+    value = encodeURIComponent(value || "");
     let expires = "";
     if (days > 0) {
         let date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         expires = "; expires=" + date.toUTCString();
     }
-    document.cookie = name + "=" + (value || "") + expires + "; path=" + path;
+    document.cookie = name + "=" + value + expires + "; path=" + path;
 }

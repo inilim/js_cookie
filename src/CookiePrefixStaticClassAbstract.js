@@ -1,6 +1,6 @@
-import {getCookieByName, setCookie} from './Cookie';
+import {getCookie, setCookie} from './Cookie';
 
-export class CookiePrefixClassAbstract {
+export class CookiePrefixStaticClassAbstract {
     static prefix = "";
 
     /**
@@ -15,7 +15,7 @@ export class CookiePrefixClassAbstract {
      * @param {string} name
      */
     static get(name) {
-        return getCookieByName(this.getName(name));
+        return getCookie(this.getName(name));
     }
 
     /**
