@@ -5,7 +5,7 @@
  */
 export function getCookie(name) {
     name = encodeURIComponent(name);
-    let matches = document.cookie.match(
+    let matches = getCookieAsString().match(
         new RegExp(
             "(?:^|; )" +
             name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
@@ -34,11 +34,21 @@ export function setCookie (name, value, seconds = 0, path = '/')
     document.cookie = name + "=" + value + expires + "; path=" + path;
 }
 
+/**
+ * @returns {object}
+ */
 export function getCookieAsObject () {
-    return document.cookie
+    return getCookieAsString()
     .split(';')
     .map(cookie => cookie.split('='))
     .reduce((accumulator, [key,value]) =>
-        ({...accumulator, [key.trim()]: decodeURIComponent(value)}),
+        ({...accumulator, [decodeURIComponent(key.trim())]: decodeURIComponent(value)}),
         {});
+}
+
+/**
+ * @returns {string}
+ */
+export function getCookieAsString(){
+    return document.cookie;
 }
