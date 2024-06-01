@@ -54,3 +54,13 @@ export function getCookieAsObject () {
 export function getCookieAsString(){
     return document.cookie;
 }
+
+export function deleteCookie(name) {
+    let val= getCookie(name);
+    if(val === null) return;
+
+    let expires = new Date();
+    expires.setTime(expires.getTime() - 1);
+    
+    document.cookie = name + "=" + val + ";expires=" + expires.toUTCString();
+}
