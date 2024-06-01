@@ -1,0 +1,13 @@
+{
+    "name": "inilim/js_cookie",
+    "description": "js_cookie",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "inilim"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
