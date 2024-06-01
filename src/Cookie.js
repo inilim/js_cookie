@@ -33,3 +33,12 @@ export function setCookie (name, value, seconds = 0, path = '/')
     }
     document.cookie = name + "=" + value + expires + "; path=" + path;
 }
+
+export function getCookieAsObject () {
+    return document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key,value]) =>
+        ({...accumulator, [key.trim()]: decodeURIComponent(value)}),
+        {});
+}
