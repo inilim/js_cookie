@@ -38,7 +38,9 @@ export function setCookie (name, value, seconds = 0, path = '/')
  * @returns {object}
  */
 export function getCookieAsObject () {
-    return getCookieAsString()
+    let cookies = getCookieAsString();
+    if(cookies.length === 0) return {};
+    return cookies
     .split(';')
     .map(cookie => cookie.split('='))
     .reduce((accumulator, [key,value]) =>
