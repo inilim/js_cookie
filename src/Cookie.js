@@ -19,16 +19,16 @@ export function getCookie(name) {
  * @param {string} name
  * @param {string|null} value
  * @param {string} path
- * @param {number} days
+ * @param {number} seconds
  */
-export function setCookie (name, value, days = 0, path = '/')
+export function setCookie (name, value, seconds = 0, path = '/')
 {
     name = encodeURIComponent(name);
     value = encodeURIComponent(value || "");
     let expires = "";
-    if (days > 0) {
+    if (seconds > 0) {
         let date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        date.setTime(date.getTime() + (seconds * 1000));
         expires = "; expires=" + date.toUTCString();
     }
     document.cookie = name + "=" + value + expires + "; path=" + path;

@@ -41,9 +41,9 @@ export class CookiePrefixStaticClassAbstract {
      * @param {string} name
      * @param {string} value
      * @param {string} path
-     * @param {number|null} expires
+     * @param {number} seconds
      */
-    static set(name, value, days = 0, path = "/") {
-        setCookie(this.getName(name), value, days, path);
+    static set(name, value, seconds = 0, path = "/") {
+        setCookie(this.getName(name), value, seconds, path);
     }
 }
