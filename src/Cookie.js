@@ -48,6 +48,10 @@ export function getCookieAsObject () {
         {});
 }
 
+export function getAllKeysCookie(){
+    return Object.keys(getCookieAsObject());
+}
+
 /**
  * @returns {string}
  */
