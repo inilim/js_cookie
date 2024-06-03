@@ -1,4 +1,4 @@
-import {getCookie, setCookie} from './Cookie';
+import { getCookie, setCookie, getAllKeysCookie } from "./Cookie";
 
 export class CookiePrefixStaticClassAbstract {
     static prefix = "";
@@ -23,8 +23,7 @@ export class CookiePrefixStaticClassAbstract {
      * @returns {bool}
      */
     static has(name) {
-        let res = this.get(name);
-        return res !== null;
+        return getAllKeysCookie().indexOf(this.getName(name)) !== -1;
     }
 
     /**
